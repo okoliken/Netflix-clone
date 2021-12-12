@@ -22,20 +22,13 @@
 
       <ul class="flex items-center space-x-4 md:space-x-10">
         <li>
-          <a
-            href=""
+          <router-link
+            to="/"
             class="text-white uppercase hover:bg-red-600 rounded-sm text-xs lg:text-md px-2 md:px-3 py-2 bg-red-700"
-            >Popular Movies</a
+            >Back to Home</router-link
+          >
           >
         </li>
-        <li>
-          <a
-            href=""
-            class="text-white hover:border-white text-xs lg:text-md px-2 md:px-3 py-2 border-gray-600 border uppercase"
-            >Top 250(Movies)</a
-          >
-        </li>
-        <li></li>
       </ul>
     </nav>
   </header>

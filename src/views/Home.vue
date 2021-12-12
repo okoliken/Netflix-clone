@@ -1,34 +1,33 @@
 <template>
-  <div class="container sm:mx-auto py-14 md:py-20 px-4">
-    <div class="mt-5 md:mt-0">
-      <h1 class="text-white text-3xl md:text-5xl font-bold capitalize">movies</h1>
-    </div>
-    <p class="text-white text-lg font-semibold my-8 md:w-2/4">
-      Movies move us like nothing else can, whether they're scary, funny,
-      dramatic, romantic or anywhere in between. So many titles, so much to
-      experience.
-    </p>
+  <MovieBanner />
+  <div class="container mx-auto">
+    <MovieRow
+      title="NETFLIX ORIGINALS"
+      :requests="requests.fetchNetflixOriginals"
+    />
+    <MovieRow title="Trending Now" :requests="requests.fetchingTrending" />
+    <MovieRow title="Top Rated" :requests="requests.fetchTopRated" />
+    <MovieRow title="Action Movies" :requests="requests.fetchActionMovies" />
+    <MovieRow title="Comedy Movies" :requests="requests.fetchComedyMovies" />
+    <MovieRow title="Horror Movies" :requests="requests.fetchHorrorMovies" />
+    <MovieRow title="Romantic Movies" :requests="requests.fetchRomanceMovies" />
+    <MovieRow title="Documentaries" :requests="requests.fetchDocumentaries" />
   </div>
-
-  <main class="container mx-auto">
-    <h3 class="py-6 text-2xl text-white font-semibold ml-3">Exciting Movies</h3>
-    <div class="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 container mx-auto px-3 md:px-0">
-      <Movies />
-    </div>
-  </main>
 </template>
 
 <script>
-
-import Movies from "../components/Movies.vue";
-import {mapActions} from "vuex"
-
+import MovieRow from "../components/MovieRow.vue";
+import MovieBanner from "../components/MovieBanner.vue";
+import requests from "./requests";
 export default {
   name: "Home",
-  components: { Movies },
-  methods: mapActions(["getMovieData"]),
-  created() {
-    this.getMovieData()
-  }
+  data() {
+    return {
+      requests,
+    };
+  },
+  components: { MovieRow, MovieBanner },
 };
 </script>
+
+<style></style>

@@ -1,0 +1,8 @@
+https://api.themoviedb.org/3/trending/all/week?api_key=1282393e3b1d1174618a5f9824d4ec9c&languages=en-US
+http://api.themoviedb.org/3/discover/tv?api_key=1282393e3b1d1174618a5f9824d4ec9c&with_networks=213
+https://api.themoviedb.org/3/movie/top_rated?api_key=1282393e3b1d1174618a5f9824d4ec9c&languages=en-US
+https://api.themoviedb.org/3/discover/movie?api_key=1282393e3b1d1174618a5f9824d4ec9c&with_genres=28
+https://api.themoviedb.org/3/discover/movie?api_key=1282393e3b1d1174618a5f9824d4ec9c&with_genres=35
+https://api.themoviedb.org/3/discover/movie?api_key=1282393e3b1d1174618a5f9824d4ec9c&with_genres=27
+https://api.themoviedb.org/3/discover/movie?api_key=1282393e3b1d1174618a5f9824d4ec9c&with_genres=10749
+https://api.themoviedb.org/3/discover/movie?api_key=1282393e3b1d1174618a5f9824d4ec9c&with_genres=99
