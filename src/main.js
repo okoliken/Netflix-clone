@@ -7,6 +7,7 @@ import scrollreveal from "scrollreveal";
 import YouTube from "vue3-youtube";
 
 import "./index.css";
+import './assets/tailwind.css'
 
 scrollreveal().reveal(".movies");
 // createApp(App).use(store).use(router).mount('#app')
