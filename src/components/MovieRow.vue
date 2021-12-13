@@ -4,6 +4,13 @@
   >
     {{ title }}
   </p>
+  <YouTube
+    v-if="movieURL"
+    class=""
+    :src="movieURL"
+    @ready="onReady"
+    ref="youtube"
+  />
   <div
     v-if="tmdbMovie.data"
     class="flex overflow-x-scroll py-5 px-4 md:px-2 overflow-y-hidden scroll-hidden"
@@ -14,8 +21,10 @@
       class="w-full object-contain poster"
       :src="`${base_url}${movie.poster_path}`"
       :alt="movie.name"
+      @click="getMovieUrl(movie)"
     />
   </div>
+
   <loading-gif v-if="isloading" />
   <span class="text-white" v-else>{{ errMessage }}</span>
 </template>
@@ -24,6 +33,9 @@
 import axios from "axios";
 import LoadingGif from "./LoadingGif.vue";
 import VLazyImage from "v-lazy-image";
+
+import movieTrailer from "movie-trailer";
+
 export default {
   name: "MovieRow",
   props: {
@@ -36,6 +48,7 @@ export default {
       base_url: "https://image.tmdb.org/t/p/original/",
       isloading: false,
       errMessage: "",
+      movieURL: "",
     };
   },
   components: {
@@ -55,6 +68,23 @@ export default {
         this.isloading = false;
 
         this.errMessage = `No ${this.title} available... check your Internet Connection.`;
+      }
+    },
+    onReady() {
+      this.$refs.youtube.playVideo();
+    },
+    getMovieUrl(movie) {
+      console.log(movie);
+      if (this.movieURL) {
+        this.movieURL = "";
+      } else {
+        movieTrailer(movie?.name || "")
+          .then((url) => {
+            console.log(url);
+            const urlParams = new URLSearchParams(new URL(url).search);
+            this.movieURL = urlParams.get("v");
+          })
+          .catch((err) => console.log(err));
       }
     },
   },

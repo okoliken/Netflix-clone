@@ -1,42 +1,44 @@
 <template>
-  <header class="absolute w-full" style="z-index: 100">
-    <nav
-      class="flex items-center justify-between container mx-auto px-2 md:px-0"
+  <div class="absolute w-full" style="z-index: 1">
+    <header
+      :class="{
+        'bg-black w-full fixed bg-opacity-90 transition-all duration-200 ease':
+          navBg,
+      }"
     >
-      <img src="../assets/netflix-logo-png-2584.png" alt="" class="w-32" />
+      <nav
+        class="flex items-center justify-between container mx-auto px-2 md:px-0"
+      >
+        <img
+          src="../assets/netflix-logo-png-2584.png"
+          alt=""
+          class="w-32 object-contain"
+        />
 
-      <ul class="">
-        <li>
-          <router-link
-            :to="{ name: 'popularMovies' }"
-            class="text-white uppercase hover:bg-red-600 rounded-sm text-xs lg:text-md px-2 md:px-3 py-2 bg-red-700"
-            >Popular Movies</router-link
-          >
-        </li>
-      </ul>
-    </nav>
-  </header>
+        <ul class="">
+          <li>
+            <router-link
+              :to="{ name: 'popularMovies' }"
+              class="text-white uppercase hover:bg-red-600 rounded-sm text-xs lg:text-md px-2 md:px-3 py-2 bg-red-700"
+              >Popular Movies</router-link
+            >
+          </li>
+        </ul>
+      </nav>
+    </header>
+  </div>
   <div
     v-if="randomBannerMovieimg"
     :style="`background-image:linear-gradient( rgba(0,0,0,.3),rgba(0,0,0,.3)),url(${base_url}${randomBannerMovieimg?.backdrop_path})`"
     class="banner-img relative"
   >
-    <div
-      v-if="
-        (randomBannerMovieimg?.name || randomBannerMovieimg?.original_name) &&
-        randomBannerMovieimg.overview
-      "
-      class="container mx-auto px-4 md:px-5 py-20 md:py-16"
-    >
+    <div class="container mx-auto px-4 md:px-5 py-24 md:py-16 mb-5 md:mb-0">
       <h1 class="font-bold text-3xl md:text-6xl text-white md:py-6">
         {{ randomBannerMovieimg?.name || randomBannerMovieimg?.original_name }}
       </h1>
       <p class="text-white text-lg md:text-xl font-medium w-full md:w-1/2">
         {{ randomBannerMovieimg.overview }}
       </p>
-    </div>
-    <div v-else class="flex items-center justify-center py-32">
-      <LoadingGif />
     </div>
     <div class="dark-bottom"></div>
   </div>
@@ -52,7 +54,8 @@ export default {
   data() {
     return {
       randomBannerMovieimg: [],
-      base_url: "https://image.tmdb.org/t/p/original/",
+      base_url: "https://image.tmdb.org/t/p/original",
+      navBg: false,
     };
   },
   components: {
@@ -75,6 +78,14 @@ export default {
   },
   mounted() {
     this.getrandomBannerMovieimg();
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 100) {
+        this.navBg = true;
+      } else this.navBg = false;
+    });
+  },
+  unmounted() {
+    window.removeEventListener("scroll");
   },
 };
 </script>
@@ -88,7 +99,7 @@ export default {
   background-repeat: no-repeat;
 }
 .dark-bottom {
-  height: 7.4rem;
+  height: 5.3rem;
   background-image: linear-gradient(
     180deg,
     transparent,

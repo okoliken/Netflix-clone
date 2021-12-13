@@ -6,12 +6,6 @@
   >
     <LoadingGif />
   </div>
-  <div
-    v-else
-    class="w-full h-screen capitalize fixed bg-black bg-opacity-80 flex items-center justify-center text-white"
-  >
-    Oopps...Something Went Wrong Check Your internet connection
-  </div>
   <div class="container sm:mx-auto py-14 md:py-20 px-4">
     <div class="mt-5 md:mt-0">
       <h1 class="text-white text-3xl md:text-5xl font-bold capitalize">
@@ -44,11 +38,13 @@
 import Movies from "../components/Movies.vue";
 import Navbar from "../components/Navbar.vue";
 import LoadingGif from "../components/LoadingGif.vue";
+
+import VLazyImage from "v-lazy-image";
 import { mapActions, mapGetters } from "vuex";
 
 export default {
   name: "popularMovies",
-  components: { Movies, Navbar, LoadingGif },
+  components: { Movies, Navbar, LoadingGif, VLazyImage },
   methods: mapActions(["getMovieData"]),
   created() {
     this.getMovieData();

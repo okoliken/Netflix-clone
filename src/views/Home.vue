@@ -1,6 +1,7 @@
 <template>
   <MovieBanner />
   <div class="container mx-auto">
+    <!--  -->
     <MovieRow
       title="NETFLIX ORIGINALS"
       :requests="requests.fetchNetflixOriginals"
@@ -27,6 +28,7 @@ export default {
     };
   },
   components: { MovieRow, MovieBanner },
+  methods: {},
 };
 </script>
 

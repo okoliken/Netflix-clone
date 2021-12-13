@@ -6,12 +6,7 @@
   >
     <LoadingGif />
   </div>
-  <div
-    v-else
-    class="w-full h-screen capitalize fixed bg-black bg-opacity-80 flex items-center justify-center text-white"
-  >
-    Oopps...Something Went Wrong Check Your internet connection
-  </div>
+
   <div
     :style="`background-image:linear-gradient( rgba(0,0,0,.5),rgba(0,0,0,.5)), url(${details.image});`"
     class="bg-img"
@@ -115,7 +110,7 @@ export default {
   },
   methods: mapActions(["getMovieDetails"]),
   components: { VLazyImage, Navbar, LoadingGif },
-  computed: mapGetters(["details","loading"]),
+  computed: mapGetters(["details", "loading"]),
   created() {
     this.getMovieDetails(this.id);
   },
