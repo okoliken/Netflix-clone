@@ -100,6 +100,7 @@ export default {
 }
 .dark-bottom {
   height: 5.3rem;
+  position: absolute;
   background-image: linear-gradient(
     180deg,
     transparent,

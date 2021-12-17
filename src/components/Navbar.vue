@@ -1,5 +1,5 @@
 <template>
-  <header class="bg-black w-full fixed bg-opacity-90">
+  <header class="bg-black w-full fixed bg-opacity-90" style="z-index: 100">
     <nav
       class="flex items-center justify-between container mx-auto h-16 px-1 md:px-0"
     >

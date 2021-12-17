@@ -4,13 +4,6 @@
   >
     {{ title }}
   </p>
-  <YouTube
-    v-if="movieURL"
-    class=""
-    :src="movieURL"
-    @ready="onReady"
-    ref="youtube"
-  />
   <div
     v-if="tmdbMovie.data"
     class="flex overflow-x-scroll py-5 px-4 md:px-2 overflow-y-hidden scroll-hidden"
@@ -33,8 +26,6 @@
 import axios from "axios";
 import LoadingGif from "./LoadingGif.vue";
 import VLazyImage from "v-lazy-image";
-
-import movieTrailer from "movie-trailer";
 
 export default {
   name: "MovieRow",
@@ -70,23 +61,6 @@ export default {
         this.errMessage = `No ${this.title} available... check your Internet Connection.`;
       }
     },
-    onReady() {
-      this.$refs.youtube.playVideo();
-    },
-    getMovieUrl(movie) {
-      console.log(movie);
-      if (this.movieURL) {
-        this.movieURL = "";
-      } else {
-        movieTrailer(movie?.name || "")
-          .then((url) => {
-            console.log(url);
-            const urlParams = new URLSearchParams(new URL(url).search);
-            this.movieURL = urlParams.get("v");
-          })
-          .catch((err) => console.log(err));
-      }
-    },
   },
   mounted() {
     this.fetchTmdbMovies();
@@ -106,5 +80,17 @@ export default {
 }
 .scroll-hidden::-webkit-scrollbar {
   display: none;
+}
+@media (min-width: 500px) {
+  .scroll-hidden::-webkit-scrollbar {
+    display: block;
+    background-color: #333;
+    height: 14px;
+    border-radius: 50px;
+  }
+  .scroll-hidden::-webkit-scrollbar-thumb {
+    background-color: black;
+    border-radius: 50px;
+  }
 }
 </style>
