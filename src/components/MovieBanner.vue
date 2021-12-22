@@ -2,29 +2,29 @@
   <div class="absolute w-full" style="z-index: 1">
     <header
       :class="{
-        'bg-black w-full fixed bg-opacity-90 transition-all duration-200 ease':
+        'bg-black w-full fixed bg-opacity-90 transition-all duration-300 ease-in':
           navBg,
       }"
     >
-      <nav
-        class="flex items-center justify-between container mx-auto px-2 md:px-0"
-      >
-        <img
-          src="../assets/netflix-logo-png-2584.png"
-          alt=""
-          class="w-32 object-contain"
-        />
+      <Navbar>
+        <template #movieBanner>
+            <img
+              src="../assets/netflix-logo-png-2584.png"
+              alt=""
+              class="w-32 object-contain"
+            />
 
-        <ul class="">
-          <li>
-            <router-link
-              :to="{ name: 'popularMovies' }"
-              class="text-white uppercase hover:bg-red-600 rounded-sm text-xs lg:text-md px-2 md:px-3 py-2 bg-red-700"
-              >Popular Movies</router-link
-            >
-          </li>
-        </ul>
-      </nav>
+            <ul>
+              <li>
+                <router-link
+                  :to="{ name: 'popularMovies' }"
+                  class="text-white uppercase hover:bg-red-600 rounded-sm text-xs lg:text-md px-2 md:px-3 py-2 bg-red-700"
+                  >Popular Movies</router-link
+                >
+              </li>
+            </ul>
+        </template>
+      </Navbar>
     </header>
   </div>
   <div
@@ -47,6 +47,7 @@
 <script>
 import axios from "axios";
 import request from "../views/requests";
+import Navbar from "./Navbar.vue";
 import LoadingGif from "./LoadingGif.vue";
 
 export default {
@@ -60,6 +61,7 @@ export default {
   },
   components: {
     LoadingGif,
+    Navbar,
   },
   methods: {
     async getrandomBannerMovieimg() {
@@ -85,7 +87,7 @@ export default {
     });
   },
   unmounted() {
-    window.removeEventListener("scroll");
+    window.removeEventListener("scroll", () => false);
   },
 };
 </script>

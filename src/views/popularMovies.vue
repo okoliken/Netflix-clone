@@ -1,5 +1,37 @@
 <template>
-  <Navbar />
+  <header class="bg-black w-full fixed bg-opacity-90" style="z-index: 100">
+    <Navbar>
+      <template #popularMovies>
+        <div>
+          <router-link to="/">
+            <img
+              src="../assets/netflix-logo-png-2584.png"
+              alt=""
+              class="w-32 hidden md:block"
+            />
+          </router-link>
+          <router-link to="/">
+            <img
+              src="../assets/netflix-logo-png-2616.png"
+              alt=""
+              class="w-16 block md:hidden"
+            />
+          </router-link>
+        </div>
+
+        <ul class="flex items-center space-x-4 md:space-x-10">
+          <li>
+            <router-link
+              to="/"
+              class="text-white uppercase hover:bg-red-600 rounded-sm text-xs lg:text-md px-2 md:px-3 py-2 bg-red-700"
+              >Back to Home</router-link
+            >
+            >
+          </li>
+        </ul>
+      </template>
+    </Navbar>
+  </header>
   <div
     v-if="loading"
     class="w-full h-screen fixed bg-black bg-opacity-80 flex items-center justify-center"

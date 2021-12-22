@@ -54,7 +54,6 @@ export default createStore({
         commit("isLoading", false);
       } catch (error) {
         console.log(error);
-        commit("isLoading", false);
       }
     },
   },

@@ -14,7 +14,6 @@
       class="w-full object-contain poster"
       :src="`${base_url}${movie.poster_path}`"
       :alt="movie.name"
-      @click="getMovieUrl(movie)"
     />
   </div>
 
@@ -39,7 +38,6 @@ export default {
       base_url: "https://image.tmdb.org/t/p/original/",
       isloading: false,
       errMessage: "",
-      movieURL: "",
     };
   },
   components: {
