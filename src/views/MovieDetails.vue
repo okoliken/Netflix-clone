@@ -57,7 +57,9 @@
       class="container mx-auto bg-black bg-opacity-90 p-8 rounded-md transform -translate-y-10 z-0"
     >
       <h2 class="text-2xl md:text-3xl text-white capitalize">Plot</h2>
-      <p class="py-5 font-medium text-gray-50 md:text-2xl">{{ details.plot }}</p>
+      <p class="py-5 font-medium text-gray-50 md:text-2xl">
+        {{ details.plot }}
+      </p>
     </div>
     <main>
       <!-- <div class="container mx-auto px-5 my-6">
@@ -133,8 +135,36 @@
           >No Trailer</a
         >
       </div> -->
-      <div class="flex justify-end container mx-auto">
-          <button   class="text-white uppercase hover:bg-red-600 rounded-sm text-xs lg:text-lg px-2 md:px-3 py-2 bg-red-700">view more details</button>
+      <div class="flex justify-end container mx-auto my-7 p-8">
+        <button
+          class="text-white uppercase hover:bg-red-600 rounded-sm text-xs lg:text-lg px-2 md:px-3 py-2 bg-red-700"
+        >
+          view more details
+        </button>
+      </div>
+
+      <div class="container mx-auto p-8">
+        <h3 class="text-3xl md:text-5xl text-white mb-6">Actors List</h3>
+        <p class="md:text-2xl text-white">
+          Total Number of Actors: <span>12</span>
+        </p>
+        <carousel :items-to-show="5">
+          <slide v-for="(actor, index) in details.actorList" :key="index">
+            <div>
+              <img class="img--fluid" :src="actor.image" alt="" />
+
+              <h3 class="text-white text-2xl">Actors Name</h3>
+              <p class="text-white">{{ actor.name }}</p>
+              <h3 class="text-white text-2xl">Character Name</h3>
+              <p class="text-white">{{ actor.asCharacter }}</p>
+            </div>
+          </slide>
+
+          <template #addons>
+            <navigation />
+            <pagination />
+          </template>
+        </carousel>
       </div>
     </main>
   </div>
@@ -142,15 +172,23 @@
 
 <script>
 import { mapActions, mapGetters } from "vuex";
-import VLazyImage from "v-lazy-image";
 import Navbar from "../components/Navbar.vue";
 import LoadingGif from "../components/LoadingGif.vue";
+import "vue3-carousel/dist/carousel.css";
+import { Carousel, Slide, Pagination, Navigation } from "vue3-carousel";
 export default {
   props: {
     id: String,
   },
   methods: mapActions(["getMovieDetails"]),
-  components: { VLazyImage, Navbar, LoadingGif },
+  components: {
+    Navbar,
+    LoadingGif,
+    Carousel,
+    Slide,
+    Pagination,
+    Navigation,
+  },
   computed: mapGetters(["details", "loading"]),
   created() {
     this.getMovieDetails(this.id);
@@ -163,9 +201,17 @@ export default {
   width: 100%;
   height: 600px;
   background-repeat: no-repeat;
+  background-attachment: fixed;
   background-size: cover;
   object-fit: contain;
   min-height: 600px;
 }
-
+.img--fluid {
+  max-width: 200px;
+  width: 200px;
+  border-radius: 50%;
+  min-height: 50px;
+  height: 200px;
+  object-fit: cover;
+}
 </style>

@@ -56,7 +56,7 @@
     <Movies>
       <template v-slot="{ movie }">
         <router-link :to="{ name: 'MovieDetails', params: { id: movie.id } }">
-          <v-lazy-image :src="movie.image" alt="" class="w-full rounded-sm" />
+          <img :src="movie.image" alt="" class="w-full rounded-sm" />
           <p class="text-white text-center font-medium my-1">
             {{ movie.title }}
           </p>
@@ -71,12 +71,12 @@ import Movies from "../components/Movies.vue";
 import Navbar from "../components/Navbar.vue";
 import LoadingGif from "../components/LoadingGif.vue";
 
-import VLazyImage from "v-lazy-image";
+// import VLazyImage from "v-lazy-image";
 import { mapActions, mapGetters } from "vuex";
 
 export default {
   name: "popularMovies",
-  components: { Movies, Navbar, LoadingGif, VLazyImage },
+  components: { Movies, Navbar, LoadingGif },
   methods: mapActions(["getMovieData"]),
   created() {
     this.getMovieData();
