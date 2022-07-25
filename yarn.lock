@@ -10857,6 +10857,11 @@ vue-lazyload-images@^0.0.4:
   resolved "https://registry.npmjs.org/vue-lazyload-images/-/vue-lazyload-images-0.0.4.tgz"
   integrity sha512-7FHhymYBl1zrcMCCESjkOym3fUyGebixpNRGfT7OdYOGg6dDkU2V6FmKvKdmLfl5QT4CJRHEiGBpM34ACcM0Cw==
 
+vue-lazyload@^3.0.0-rc.2:
+  version "3.0.0-rc.2"
+  resolved "https://registry.yarnpkg.com/vue-lazyload/-/vue-lazyload-3.0.0-rc.2.tgz#8a3daa598dcbb7349893d3bb39b50695049fb0d8"
+  integrity sha512-Cg7Gqb7jAoiImMPH3EMfAwJ8gZuFoBJCEtA7+TGRljrtktDtV7JAHIyKvuTgQR8DFAd7MhKi1Ys8QHdSrnGdZQ==
+
 "vue-loader-v16@npm:vue-loader@^16.1.0":
   version "16.8.3"
   resolved "https://registry.npmjs.org/vue-loader/-/vue-loader-16.8.3.tgz"

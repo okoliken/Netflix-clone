@@ -8,22 +8,20 @@
     v-if="tmdbMovie.data"
     class="flex overflow-x-scroll py-5 px-4 md:px-2 overflow-y-hidden scroll-hidden"
   >
-    <v-lazy-image
+    <img
       v-for="movie in tmdbMovie.data.results"
       :key="movie.id"
       class="w-full object-contain poster"
-      :src="`${base_url}${movie.poster_path}`"
+      v-lazy="`${base_url}${movie.poster_path}`"
       :alt="movie.name"
     />
   </div>
 
-  <loading-gif v-if="isloading" />
-  <span class="text-white" v-else>{{ errMessage }}</span>
+ 
 </template>
 
 <script>
 import axios from "axios";
-import LoadingGif from "./LoadingGif.vue";
 import VLazyImage from "v-lazy-image";
 
 export default {
@@ -41,7 +39,6 @@ export default {
     };
   },
   components: {
-    "loading-gif": LoadingGif,
     VLazyImage,
   },
   methods: {
