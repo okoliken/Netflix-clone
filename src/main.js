@@ -10,9 +10,16 @@ import "./index.css";
 import './assets/tailwind.css'
 
 scrollreveal().reveal(".movies");
-// createApp(App).use(store).use(router).mount('#app')
+// // createApp(App).use(store).use(router).mount('#app')
+
+import VueImgLazyload from 'vue-lazyload-images'
+
 
 const app = createApp(App);
+
+
+app.directive('imglazyload', VueImgLazyload)
+
 
 app.use(store);
 app.component("YouTube", YouTube);

@@ -45,22 +45,22 @@
       class="bg-img"
     >
       <h1
-        class="text-5xl lg:text-6xl font-semibold pt-48 ml-8 md:pt-32 text-white md:ml-10"
+        class="text-5xl lg:text-4xl font-semibold pt-48 ml-8 md:pt-64 text-white md:ml-10"
       >
         Movie Title:
       </h1>
-      <p class="text-3xl lg:text-4xl font-semibold ml-8 text-white md:ml-10">
+      <p class="text-3xl lg:text-7xl font-semibold ml-8 text-white md:ml-10">
         {{ details.title }}
       </p>
     </div>
     <div
-      class="container mx-auto bg-black bg-opacity-90 p-3 rounded-md transform -translate-y-10 z-0"
+      class="container mx-auto bg-black bg-opacity-90 p-8 rounded-md transform -translate-y-10 z-0"
     >
-      <h2 class="text-2xl md:text-2xl text-white capitalize">Plot</h2>
-      <p class="py-5 font-medium text-gray-50">{{ details.plot }}</p>
+      <h2 class="text-2xl md:text-3xl text-white capitalize">Plot</h2>
+      <p class="py-5 font-medium text-gray-50 md:text-2xl">{{ details.plot }}</p>
     </div>
     <main>
-      <div class="container mx-auto px-5 my-6">
+      <!-- <div class="container mx-auto px-5 my-6">
         <div class="grid md:grid-cols-3 gap-3">
           <div>
             <h2 class="text-3xl md:text-4xl text-white capitalize">
@@ -132,6 +132,9 @@
           class="w-full px-16 sm:px-20 md:px-36 py-3 bg-red-600 text-white font-semibold uppercase leading-6 hover:bg-red-700 cursor-pointer my-10"
           >No Trailer</a
         >
+      </div> -->
+      <div class="flex justify-end container mx-auto">
+          <button   class="text-white uppercase hover:bg-red-600 rounded-sm text-xs lg:text-lg px-2 md:px-3 py-2 bg-red-700">view more details</button>
       </div>
     </main>
   </div>
@@ -158,10 +161,11 @@ export default {
 <style scoped>
 .bg-img {
   width: 100%;
-  height: 500px;
+  height: 600px;
   background-repeat: no-repeat;
-  background-position: center center;
   background-size: cover;
   object-fit: contain;
+  min-height: 600px;
 }
+
 </style>
