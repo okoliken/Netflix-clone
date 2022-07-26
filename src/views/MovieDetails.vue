@@ -145,13 +145,13 @@
 
       <div class="container mx-auto p-8">
         <h3 class="text-3xl md:text-5xl text-white mb-6">Actors List</h3>
-        <p class="md:text-2xl text-white">
-          Total Number of Actors: <span>12</span>
+        <p class="md:text-2xl text-white mb-6">
+          Total Number of Actors: <span>{{details.actorList.length}}</span>
         </p>
         <carousel :items-to-show="5">
           <slide v-for="(actor, index) in details.actorList" :key="index">
             <div>
-              <img class="img--fluid" :src="actor.image" alt="" />
+              <img class="img--fluid" v-lazy="actor.image" alt="" />
 
               <h3 class="text-white text-2xl">Actors Name</h3>
               <p class="text-white">{{ actor.name }}</p>
@@ -162,7 +162,6 @@
 
           <template #addons>
             <navigation />
-            <pagination />
           </template>
         </carousel>
       </div>
@@ -175,7 +174,7 @@ import { mapActions, mapGetters } from "vuex";
 import Navbar from "../components/Navbar.vue";
 import LoadingGif from "../components/LoadingGif.vue";
 import "vue3-carousel/dist/carousel.css";
-import { Carousel, Slide, Pagination, Navigation } from "vue3-carousel";
+import { Carousel, Slide, Navigation } from "vue3-carousel";
 export default {
   props: {
     id: String,
@@ -186,7 +185,6 @@ export default {
     LoadingGif,
     Carousel,
     Slide,
-    Pagination,
     Navigation,
   },
   computed: mapGetters(["details", "loading"]),
@@ -196,7 +194,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style >
 .bg-img {
   width: 100%;
   height: 600px;
@@ -204,6 +202,7 @@ export default {
   background-attachment: fixed;
   background-size: cover;
   object-fit: contain;
+  background-position: center;
   min-height: 600px;
 }
 .img--fluid {
@@ -213,5 +212,8 @@ export default {
   min-height: 50px;
   height: 200px;
   object-fit: cover;
+}
+.carousel__prev, .carousel__next{
+  background-color: #b91c1c !important;
 }
 </style>
