@@ -145,18 +145,18 @@
 
       <div class="container mx-auto p-8">
         <h3 class="text-3xl md:text-5xl text-white mb-6">Actors List</h3>
-        <p class="md:text-2xl text-white mb-6">
+        <p class="md:text-2xl text-white mb-14">
           Total Number of Actors: <span>{{details.actorList.length}}</span>
         </p>
-        <carousel :items-to-show="5">
+        <carousel  :breakpoints="breakpoints">
           <slide v-for="(actor, index) in details.actorList" :key="index">
             <div>
               <img class="img--fluid" v-lazy="actor.image" alt="" />
 
               <h3 class="text-white text-2xl">Actors Name</h3>
-              <p class="text-white">{{ actor.name }}</p>
+              <p class="text-gray-400">{{ actor.name }}</p>
               <h3 class="text-white text-2xl">Character Name</h3>
-              <p class="text-white">{{ actor.asCharacter }}</p>
+              <p class="text-gray-400">{{ actor.asCharacter }}</p>
             </div>
           </slide>
 
@@ -186,6 +186,22 @@ export default {
     Carousel,
     Slide,
     Navigation,
+  },
+  data() {
+    return {
+      breakpoints: {
+      // 700px and up
+      700: {
+        itemsToShow: 3.5,
+        snapAlign: 'center',
+      },
+      // 1024 and up
+      1024: {
+        itemsToShow: 5,
+        snapAlign: 'start',
+      },
+    },
+    }
   },
   computed: mapGetters(["details", "loading"]),
   created() {
